@@ -1,0 +1,10 @@
+.idea
+node_modules
+cdk.out
+.snyk
+package-lock.json
+package.json
+cdk.json
+jest.config.js
+tsconfig.json
+README.md

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>unavailable</title>
+    <meta charSet="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100&display=swap" rel="stylesheet">
+    <link rel="apple-touch-icon" sizes="180x180" href="./images/favicon_package/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon_package/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./images/favicon_package/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="./images/favicon_package/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="384x384" href="./images/favicon_package/android-chrome-384x384.png">
+    <link rel="manifest" href="./images/favicon_package/site.webmanifest">
+    <link rel="mask-icon" href="./images/favicon_package/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#2b5797">
+    <meta name="theme-color" content="#000000">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <style>
+        .container {
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-50%);
+        }
+
+        html {
+            color-scheme: light dark;
+        }
+
+        body {
+            font-family: 'Raleway', sans-serif;
+            background: linear-gradient(
+                    to left,
+                    hsl(340deg 100% 16%) 0%,
+                    hsl(340, 100%, 16%) 8%,
+                    hsl(340, 100%, 16%) 92%,
+                    hsl(340deg 100% 16%) 100%
+            );
+        }
+
+        #clockDate {
+            font: small-caps lighter 1vw 'Raleway bold', sans-serif;
+            text-align: left;
+            text-rendering: geometricPrecision;
+            line-height: 1.1vw;
+            top: 8vw;
+            left: 32vw;
+        }
+    </style>
+</head>
+
+
+<script>
+    Number.prototype.pad = function (n) {
+        for (var r = this.toString(); r.length < n; r = 0 + r) ;
+        return r;
+    };
+
+    function updateClock() {
+        let now = new Date();
+        let milli = now.getMilliseconds(),
+            sec = now.getSeconds(),
+            min = now.getMinutes(),
+            hou = now.getHours(),
+            mo = now.getMonth(),
+            dy = now.getDate(),
+            yr = now.getFullYear();
+        let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        let tags = ["mon", "d", "y", "h", "m", "s", "mi"],
+            corr = [months[mo], dy, yr, hou.pad(2), min.pad(2), sec.pad(2), milli];
+        for (let i = 0; i < tags.length; i++)
+            document.getElementById(tags[i]).firstChild.nodeValue = corr[i];
+    }
+
+    function initClock() {
+        updateClock();
+        window.setInterval("updateClock()", 1);
+    }
+</script>
+
+<body onLoad="initClock()">
+
+<div class="container">
+    <div style="font-size: 2vw">An error occurred.</div>
+    <br>
+    <div style="font-size: 1vw; line-height: 1.5vw">Sorry, the page you are looking for is currently unavailable.<br/>
+        Please try again later. <br>
+        If you are the system administrator of this resource then you should check
+        the error log for details. </div>
+    <br>
+    <div style="font-size: 1vw; line-height: 1.5vw"><em>Faithfully yours, evergreen.</em></div>
+    <br>
+    <div class="toolTip"><a href="./license.html">
+        <img src="./images/home.png" alt="image" class="pushAnimation" style="height:3.5vw; border-radius: 0.315vw;"></a></div>
+
+    <!--date and time-->
+    <div id="clockDate" style="font: small-caps lighter 1vw 'Raleway bold', sans-serif;">
+        <a id="mon">January</a>
+        <a id="d">1</a>
+        <a id="y">0</a> -
+        <a id="h">12</a>:<a id="m">00</a>:<a id="s">00</a>:<a id="mi">000</a>
+    </div>
+    <h5 class="copyright" style="position: absolute; font-family: 'Raleway', sans-serif; font-size: 0.84vw; color: grey;"> &copy
+        <script>document.write(new Date().getFullYear().toString()); </script>
+        - evergreen
+    </h5>
+</div>
+
+</body>
+</html>
