@@ -1,0 +1,1 @@
+# blog-snyk-ecr-integration
