@@ -28,6 +28,7 @@ console.log(`\x1B[1;34mAWS ACCOUNT-ID: ${env.account}`);
 const { exec } = require('child_process');
 
 exec(
+  // List aws account alias.
   'aws iam list-account-aliases --query AccountAliases --output text || exit',
   (
     error: { message: any; },
@@ -38,6 +39,7 @@ exec(
     console.log(`\x1B[1;34MAWS ACCOUNT-ALIAS: ${myAccountAlias.toUpperCase()}`);
 
     exec(
+      // List codestar connection.
       'aws codestar-connections list-connections --query "Connections[].ConnectionArn" --output text',
       (
         error: { message: any; },
@@ -50,6 +52,7 @@ exec(
     );
 
     exec(
+      // Get the current branch name.
       'git config --get remote.origin.url | sed \'s/.*\\/\\([^ ]*\\/[^.]*\\).*/\\1/\'\n',
       (
         error: { message: any; },
