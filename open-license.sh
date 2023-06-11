@@ -1,3 +1,3 @@
 #!/bin/sh
 
-open ./license.html
+open ./license/license.html

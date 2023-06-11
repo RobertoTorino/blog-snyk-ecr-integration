@@ -3,17 +3,17 @@
 ### License
 
 ```shell
-open ./license.html
+open ./license/license.html
 ```
 
 **Configure the integration for Amazon Elastic Container Registry (ECR) scanning in the Snyk dashboard: https://app.snyk.io/.
 This enables integration between one Amazon ECR registry and a Snyk organization, so you can start managing your image security.
 You will need your Snyk API key, Snyk organization's external id, the Snyk ECR integration user id (get it from your Snyk dashboard), your Codestar connection-arn, optional a Slackchannel id, and this stack to complete the integration.**
 
-**An attempt is made to keep this Stack as neutral as possible, with the intention that it can be reused by everyone.**
+**An attempt is made to keep this Stack as generic as possible, with the intention that it can be reused by everyone.**
 
 > **NOTE:**             
-> **You can use multiple Snyk organizations, but you can only use one AWS account in one Snyk organization to integrate with ECR (FYI we already discussed this with Snyk).**
+> **You can use multiple Snyk organizations, but you can only use one AWS account in one Snyk organization to integrate with ECR.**
 
 ![snyk_ecr.png](images/snyk_ecr.png)
 
@@ -22,6 +22,7 @@ You will need your Snyk API key, Snyk organization's external id, the Snyk ECR i
 **Generic variables:**
 
 * **The usual dependencies to run CDK with typescript.**
+* **For a new project use `cdk init app --language typescript`**
 * **Clone or fork this repository https://bitbucket.org/persgroep/snyk-ecr-permissions/src/main/**
 
 **Optional:**
@@ -157,5 +158,23 @@ export const env = {
     this, '/chatbot/subscription/endpoint');
 ```
 
-### IaC diagram
+**Extra: Snyk settings:**
+
+Set up you Snyk config local:
+Create a `snyk.json` file here: `~/.config/configstore`, it should look like this:
+
+```json
+{
+  "api": "01234567b-0a0b-1c2c-2d2e-f123456789cfh",
+  "org": "your_org_name"
+}
+```
+
+Check your Snyk config: 
+```shell
+snyk config
+```
+
+
+### CDK IaC diagram
 ![extended_diagram.png](images/extended_diagram.png)
